@@ -80,6 +80,10 @@ void SyllableLabeler::setLabel(ISyllableLabel& label) const
    if (!langDependentInfo.empty()) {
       label.setLangDependentInfo(langDependentInfo);
    }
+
+   if (!lanTone.empty()) {
+      label.setLangToneInfo(lanTone);
+   }
 }
 
 /*!
@@ -129,6 +133,10 @@ void SyllableLabeler::setInfo(const std::string& str)
 {
    langDependentInfo = str;
 }
+
+    void SyllableLabeler::setToneLan(const std::string& str){
+       lanTone = str;
+    }
 
 /*!
  set phoneme positions

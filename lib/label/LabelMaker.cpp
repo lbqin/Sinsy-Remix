@@ -253,6 +253,11 @@ public:
 		labelData.set(category, 5, value);
 	}
 
+    //! set language Tone information
+    virtual void setLangToneInfo(const std::string& value) {
+        labelData.set(category, 6, value);
+    }
+
 protected:
 	//! label data
 	LabelData& labelData;

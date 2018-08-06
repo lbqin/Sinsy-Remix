@@ -239,6 +239,8 @@ public:
    //! synthesize
    bool synthesize(SynthCondition& consition);
 
+    bool generateFeatures(SynthCondition& condition);
+
    //! stop synthesizing
    bool stop();
 

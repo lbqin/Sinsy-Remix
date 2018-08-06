@@ -64,7 +64,7 @@ namespace sinsy
 
 namespace
 {
-const std::string DEFAULT_LANGUAGES = "j";
+const std::string DEFAULT_LANGUAGES = "c";
 
 class ScoreConverter : public IScoreWritable
 {
@@ -517,6 +517,36 @@ public:
       return engine.setInterpolationWeight(index, weight);
    }
 
+    bool generateLabelFile(const LabelStrings& label,const std::string& saveFilePath){
+       FILE* fp(NULL);
+       if (!saveFilePath.empty()) {
+          fp = fopen(saveFilePath.c_str(), "wb");
+          if (NULL == fp) {
+             return false;
+          }
+          char** lines = (char**) label.getData();
+          std::string lab;
+          for (int i = 0; i < label.size(); i++) {
+             lab += lines[i];
+             lab += "\n";
+          }
+          //fwrite(lab.c_str(), sizeof(std::string), lab.size(), fp);
+          fprintf(fp, "%s", lab.c_str());
+          fclose(fp);
+          return true;
+       } else
+          return false;
+    }
+    //! getLabelParam
+    bool writeLabelParam(SynthConditionImpl& condition) {
+       LabelMaker labelMaker(converter);
+       labelMaker << score;
+       labelMaker.fix();
+       LabelStrings label;
+
+       labelMaker.outputLabel(label, false, 1, 2);
+       return generateLabelFile(label, condition.getSaveFilePath());
+    }
    //! synthesize
    bool synthesize(SynthConditionImpl& condition) {
       LabelMaker labelMaker(converter);
@@ -976,6 +1006,21 @@ bool Sinsy::setInterpolationWeight(size_t index, double weight)
    return impl->setInterpolationWeight(index, weight);
 }
 
+    /*!
+ generate features
+ */
+    bool Sinsy::generateFeatures(SynthCondition& condition)
+    {
+       try {
+          if (!impl->writeLabelParam(*condition.impl)) {
+             return false;
+          }
+       } catch (const std::exception& ex) {
+          ERR_MSG("Exception in API " << FUNC_NAME("") << " : " << ex.what());
+          return false;
+       }
+       return true;
+    }
 /*!
  synthesize
  */

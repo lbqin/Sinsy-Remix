@@ -70,6 +70,8 @@ public:
 
    //! set file path to save RIFF format file
    void setSaveFilePath(const std::string& filePath);
+    //! set file path to save RIFF format file
+    std::string getSaveFilePath();
 
    //! unset file path to save RIFF format file
    void unsetSaveFilePath();

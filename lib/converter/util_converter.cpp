@@ -93,7 +93,7 @@ ScoreFlag matchScoreFlag(char c)
  */
 ScoreFlag analyzeScoreFlags(std::string& str, const MultibyteCharRange* charRange)
 {
-   ScoreFlag ret(0x00);
+   ScoreFlag ret(0);//0x00
 
    size_t idx(0);
    while (idx < str.size()) {

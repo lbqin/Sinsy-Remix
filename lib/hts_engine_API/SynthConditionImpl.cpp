@@ -100,6 +100,13 @@ void SynthConditionImpl::setSaveFilePath(const std::string& filePath)
 {
    this->saveFilePath = filePath;
 }
+    /*!
+ get file path to save RIFF format file
+ */
+    std::string SynthConditionImpl::getSaveFilePath()
+    {
+       return this->saveFilePath ;
+    }
 
 /*!
  unset file path to save RIFF format file

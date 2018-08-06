@@ -85,6 +85,9 @@ public:
    //! set phoneme positions
    void setPhonemePositions();
 
+    //! set language Tone information
+    void setToneLan(const std::string& str);
+
 private:
    //! copy constructor (donot use)
    SyllableLabeler(const SyllableLabeler&);
@@ -103,6 +106,9 @@ private:
 
    //! number in note
    size_t numInNote;
+
+    //! tone
+    std::string lanTone;
 
    //! language dependent information
    std::string langDependentInfo;

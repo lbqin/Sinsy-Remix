@@ -66,6 +66,9 @@ public:
 
    //! set language-dependent infomation
    virtual void setLangDependentInfo(const std::string& info) = 0;
+
+    //! set language Tone information
+    virtual void setLangToneInfo(const std::string& value) = 0;
 };
 
 };

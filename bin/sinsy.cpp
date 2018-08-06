@@ -207,7 +207,7 @@ int main(int argc, char **argv)
 	   sinsy.setStartTime(startTime);
    }
 
-   sinsy.synthesize(condition);
+    sinsy.generateFeatures(condition);
 
    return 0;
 }

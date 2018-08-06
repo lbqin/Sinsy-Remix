@@ -125,4 +125,6 @@ sinsy -x /usr/local/dic/ -m nitech_jp_song070_f001.htsvoice -o data/out.wav data
 
 sinsy -x dic -m data/model/nitech_jp_song070_f001.htsvoice -w j -o data/output.wav data/SAMPLE.xml
 
+sinsy -x dic -m data/model/nitech_jp_song070_f001.htsvoice -w j -o data/output.lab -l data/SAMPLE.xml
+
 ===============================================================================

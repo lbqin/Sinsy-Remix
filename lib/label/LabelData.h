@@ -82,6 +82,8 @@ public:
    //! get label data
    const std::string& get(char category, size_t number) const;
 
+    //std::string computeOnehotFeature(const std::string beatype[],const std::string& idstr);
+
 private:
    //! monophone flag
    bool monophoneFlag;
